@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+</form>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+
+    <title>Home Page</title>
+  </head>
+  <body>
+   <div class="ml-container">
+       <br>
+    <h1>Loan Completion Prediction Application</h1>
+    <br>
+      <h6> All Fields must be filled </h6>
+    <br>
+    <br>
+    <table>
+        <form action="{% url 'result' %}" style="margin: auto" method="POST">
+            {% csrf_token %}
+            <tr>
+                <td>
+                    &ensp;Borrower APR &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "borrowerAPR" step="any" required >
+                </td>
+                <td>
+                    &ensp;Borrower Rate&emsp;
+                </td>
+                <td>
+                    <input type="number" name = "borrowerRate" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Lender Yield &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "lenderYield" step="any" required >
+                </td>
+                <td>
+                    &ensp;Estimated Return &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "estimatedReturn" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Prosper Rating &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "prosperRating" step="any" required >
+                </td>
+                <td>
+                    &ensp;Prosper Score &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "prosperScore" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Credit Score Range Lower &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "creditScoreRangeLower" step="any" required >
+                </td>
+                <td>
+                    &ensp;Credit Score Range Upper &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "creditScoreRangeUpper" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Bankcard Utilization &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "bankcardUtilization" step="any" required>
+                </td>
+                <td>
+                    &ensp;Available Bankcard Credit &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "availableBankcardCredit" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Stated Monthly Income &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "statedMonthlyIncome" step="any" required>
+                </td>
+                <td>
+                    &ensp;Prosper Payments One Month Plus Late &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "prosperPaymentsOneMonthPlusLate" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Loan Months Since Origination &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "loanMonthsSinceOrigination" step="any" required>
+                </td>
+                <td>
+                    &ensp;Loan Original Amount &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "loanOriginalAmount" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;Monthly Loan Payment &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "monthlyLoanPayment" step="any" required>
+                </td>
+                <td>
+                    &ensp;LP Customer Principal Payments &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "lP_CustomerPrincipalPayments" step="any" required >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &ensp;LP Service Fees &emsp;
+                </td>
+                <td>
+                    <input type="number" name = "lP_ServiceFees" step="any" required>
+                </td>
+                <td>
+                    <div class="buttonHolder">
+                        <input type="submit"  class="btn-info" value="Predict" style="text-align: center; align-content: center" id="btn_1" >
+                    </div>
+                </td>
+            </tr>
+      </form>
+    </table>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    -->
+  </body>
+  <style>
+      .ml-container{
+          text-align: center;
+          background-color: #212121;
+      }
+    .buttonHolder {
+      text-align: center;
+    }
+    h6 {
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+    }
+    body {
+      background-color: #212121;
+      color: white;
+    }
+    table{
+        text-align: start;
+        background-color: #212121;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  </style>
+</form>
+</html>
