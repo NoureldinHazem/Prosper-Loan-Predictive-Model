@@ -61,5 +61,8 @@ lending market, and a discussion of future research opportunities.
 6) Changing features with datatype boolean to float.
 7) Removing duplications.
 8) Visulaization of features with datatype object and detrmine what to do with it dropping or mapping.
-> Credit
-> CreditG 
+> CreditGrade will be dropped as CreditScoreRangeLower & CreditScoreRangeUpper is equivalent to it.
+> ProsperRating (Alpha) will be dropped as ProsperRating (numeric) is equivalent to it.
+> BorrowerState will be dropped.
+> Occupation will be dropped.
+>
