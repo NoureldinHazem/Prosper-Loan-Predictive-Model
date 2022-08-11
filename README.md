@@ -48,4 +48,4 @@ lending market, and a discussion of future research opportunities.
 13) Dropping samples that have null values in some features.
 > Features = { ProsperRating (numeric), ProsperScore, ProsperRating (Alpha)}.
 
-## Feature Engineering
+## Feature Engineering :
