@@ -49,3 +49,17 @@ lending market, and a discussion of future research opportunities.
 > Features = { ProsperRating (numeric), ProsperScore, ProsperRating (Alpha)}.
 
 ## Feature Engineering :
+1) Checking Correlation for numerical variables.
+> Printing values in tables and on heatmap.
+2) Printing Descriptive Statistics.
+> using .describe()
+3) Printing info of the dataframe to know the type of each feature.
+> using .info()
+4) Dropping samples with ListingCreationDate before 2008.
+>  There was financial crisis in 2008.
+5) Dropping features with datatime type.
+6) Changing features with datatype boolean to float.
+7) Removing duplications.
+8) Visulaization of features with datatype object and detrmine what to do with it dropping or mapping.
+> Credit
+> CreditG 
