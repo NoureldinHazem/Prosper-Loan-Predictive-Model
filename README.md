@@ -61,8 +61,85 @@ lending market, and a discussion of future research opportunities.
 6) Changing features with datatype boolean to float.
 7) Removing duplications.
 8) Visulaization of features with datatype object and detrmine what to do with it dropping or mapping.
-> CreditGrade will be dropped as CreditScoreRangeLower & CreditScoreRangeUpper is equivalent to it.
-> ProsperRating (Alpha) will be dropped as ProsperRating (numeric) is equivalent to it.
-> BorrowerState will be dropped.
-> Occupation will be dropped.
->
+> CreditGrade will be dropped as CreditScoreRangeLower & CreditScoreRangeUpper is equivalent to it.<br>
+> ProsperRating (Alpha) will be dropped as ProsperRating (numeric) is equivalent to it.<br>
+> BorrowerState will be dropped.<br>
+> Occupation will be dropped.<br>
+> LoanOriginationQuarter will be dropped.<br>
+> EmploymentStatus will be mapped as 'Employed', 'Full-time', 'Self-employed', 'Part-time' will be 1 and the rest will be 0.<br>
+>  IncomeRange will be mapped as i will put in it the mean of each range of them.<br>
+>  LoanStatus will drop samples with 'Current' as it is hard to detrimine if it will complete the loan or not, and will map the rest as 'Completed' will be 1 and the rest will be 0.<br>
+9) Dropping some features after looking to the correlation heatmap.
+> Features = { EmploymentStatus, Investors, InvestmentFromFriendsAmount, InvestmentFromFriendsCount, Term, ListingCategory (numeric), EmploymentStatusDuration, IsBorrowerHomeowner, CurrentlyInGroup, CurrentCreditLines, OpenCreditLines, TotalCreditLinespast7years, OpenRevolvingAccounts, OpenRevolvingMonthlyPayment, InquiriesLast6Months, TotalInquiries, CurrentDelinquencies, AmountDelinquent, DelinquenciesLast7Years, PublicRecordsLast12Months, PublicRecordsLast10Years, RevolvingCreditBalance, TotalProsperPaymentsBilled, TotalProsperLoans, LP_CustomerPayments, LP_NetPrincipalLoss, EstimatedEffectiveYield, EstimatedLoss, LoanCurrentDaysDelinquent, LP_InterestandFees, LoanFirstDefaultedCycleNumber, Recommendations, PercentFunded }.
+10) Handling outliner of the remaining features.
+> After removing outliners some features become the same value for all the samples. So, they will be dropped.
+> Features = { LP_NonPrincipalRecoverypayments, LP_GrossPrincipalLoss, LP_CollectionFees, ScorexChangeAtTimeOfListing, ProsperPrincipalOutstanding, ProsperPaymentsLessThanOneMonthLate, ProsperPrincipalBorrowed, OnTimeProsperPayments, IncomeVerifiable, DebtToIncomeRatio, TradesOpenedLast6Months, TradesNeverDelinquent (percentage), TotalTrades }.
+
+## Models :
+> Making multiple copies of the dataframe.
+1) Logistic Regression :<br>
+Model is done with max_iter=1000
+> 'LoanStatus' will be the Labels.<br>
+> Splitting data with 20% test and 80% train.<br>
+> Feature scaling will be done by preprocessing.MinMaxScaler() to let each feature have the same important as the other features.<br>
+> Undersampling will be done by RandomUnderSampler(random_state=0) to let samples with label 0 equal to samples with label 1.<br>
+2) Neural Network:<br>
+Model consists of 2 fully connected layers first layer with 128 neurouns, second with 10 neurouns and the last with 1 neurouns (sigmoid), loss is calculated using 'binary_crossentropy'.<br>
+Batch size = 1024 and epochs = 1000.
+> 'LoanStatus' will be the Labels.<br>
+> Splitting data with 20% test , 70% train and 10% validation.<br>
+> Feature scaling will be done by preprocessing.MinMaxScaler() to let each feature have the same important as the other features.<br>
+> Undersampling will be done by RandomUnderSampler(random_state=0) to let samples with label 0 equal to samples with label 1.<br>
+3) Naive Bayes :<br>
+Gaussian naive bayes is used.
+> 'LoanStatus' will be the Labels.<br>
+> Splitting data with 20% test and 80% train.<br>
+> Feature scaling will be done by preprocessing.MinMaxScaler() to let each feature have the same important as the other features.<br>
+> Undersampling will be done by RandomUnderSampler(random_state=0) to let samples with label 0 equal to samples with label 1.<br>
+4) Decision Trees :<br>
+tree.DecisionTreeClassifier() is used.
+> 'LoanStatus' will be the Labels.<br>
+> Splitting data with 20% test and 80% train.<br>
+> Feature scaling will be done by preprocessing.MinMaxScaler() to let each feature have the same important as the other features.<br>
+> Undersampling will be done by RandomUnderSampler(random_state=0) to let samples with label 0 equal to samples with label 1.<br>
+
+## Model Accuracy:
+1) Logistic Regression :
+> Accuracy = 92 % <br>
+> Recall = 90 % at class 0 and 94 % at class 1. [ avg = 92 %] <br>
+> Precision = 94 % at class 0 and 90 % class 1.  [ avg = 92 %]<br>
+> f1-score = 92 % at class 0 and 92 % at class 1. [ avg = 92 %]
+2) Neural Network :
+> Accuracy = 98 % [ Validation accuracy = 98.37 % and train accuracy = 98.6 %. So, no overfit happen ]<br>
+> Recall = 97 % at class 0 and 99 % at class 1. [ avg = 98 %]<br>
+> Precision = 99 % at class 0 and 97 % class 1. [ avg = 98 %]<br>
+> f1-score = 98 % at class 0 and 98 % at class 1. [ avg = 98 %]
+3) Naive Bayes : 
+> Accuracy = 71 % <br>
+> Recall = 80 % at class 0 and 62 % at class 1. [ avg = 71 %] <br>
+> Precision = 68 % at class 0 and 76 % class 1.  [ avg = 72 %] <br>
+> f1-score = 73 % at class 0 and 68 % at class 1. [ avg = 71 %]
+4) Decision Trees:
+> Accuracy = 95 % <br>
+> Recall = 92 % at class 0 and 97 % at class 1. [ avg = 95 %] <br>
+> Precision = 97 % at class 0 and 93 % class 1.  [ avg = 95 %] <br>
+> f1-score = 94 % at class 0 and 95 % at class 1. [ avg = 95 %]
+
+## Saving Models :
+we saved each model and scaler we used to be used later in deployment or at local host.
+> All models are saved using pickle.dump except Neural Network was saved using save_model.
+
+# Deployment :
+## Flask : 
+We created our app by using flask, then deployed it to heroku.<br>
+We prepared the needed files to deploy our app sucessfully:<br>
+> 1) Procfile: contains run statements for main file.
+> 2) requirements.txt: contains the libraries must be downloaded by Heroku to run app file (main.py)  successfully.
+> 3) runtime.txt: contains the required python version to let the app work successfully.
+The files of this part is in Flask App folder.
+> Decision_trees is the model used for prediction.<br>
+> scaling_tree is the min_max_scaler used.<br>
+You can acess to the app by using the following link :<br>
+https://loan-completion-pred-flask.herokuapp.com/
+
+## Django :
