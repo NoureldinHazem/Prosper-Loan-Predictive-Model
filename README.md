@@ -145,3 +145,15 @@ You can acess to the app by using the following link :<br>
 https://loan-completion-pred-flask.herokuapp.com/
 
 ## Django :
+We created our app by using Django, then deployed it to heroku. <br>
+The app is working normally in local host but there is an error we facr while deploying to heroku. So, we will try to fix it as soon as possible. <br>
+> The error : the app is greater than 500 mb.
+
+We prepared the needed files to deploy our app sucessfully:<br>
+> 1) Procfile: contains run statements for app file.
+> 2) requirements.txt: contains the libraries must be downloaded by Heroku to run app file (manage.py)  successfully.
+> 3) runtime.txt: contains the required python version to let the app work successfully.
+
+The files of this part is in Django App folder.
+> neural_network is the model used for prediction.<br>
+> scaling_nn is the min_max_scaler used.<br>
