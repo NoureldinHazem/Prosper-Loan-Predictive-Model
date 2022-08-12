@@ -136,9 +136,11 @@ We prepared the needed files to deploy our app sucessfully:<br>
 > 1) Procfile: contains run statements for main file.
 > 2) requirements.txt: contains the libraries must be downloaded by Heroku to run app file (main.py)  successfully.
 > 3) runtime.txt: contains the required python version to let the app work successfully.
+
 The files of this part is in Flask App folder.
 > Decision_trees is the model used for prediction.<br>
 > scaling_tree is the min_max_scaler used.<br>
+
 You can acess to the app by using the following link :<br>
 https://loan-completion-pred-flask.herokuapp.com/
 
