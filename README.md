@@ -1,6 +1,6 @@
 # Loan-Completion-Prediction
 ## Predictive Modelling Using Social Profile in Online P2P Lending Market
-
+The goal of the project is to predict if the borrower is going to complete the loan or not.
 ## Introduction to the project :
 > Online peer-to-peer (P2P) lending markets enable individual consumers to
 borrow from, and lend money to, one another directly. We study the borrower-,
